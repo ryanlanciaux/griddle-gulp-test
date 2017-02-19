@@ -1,5 +1,7 @@
 var React = require('react');
-var Griddle = require('griddle-react');
+var ReactDOM = require('react-dom');
+var Griddle = require('griddle-react').default;
+var LocalPlugin = require('griddle-react').plugins.LocalPlugin;
 
 var fakeData =  [
   {
@@ -49,5 +51,14 @@ var fakeData =  [
   }
 ];
 
-React.render(<Griddle results={fakeData} />, document.getElementById('main'));
+const TestComponent = (props) => {
+  return (
+    <div>
+      <h1>Test</h1>
+      <Griddle data={fakeData} plugins={[LocalPlugin]} />
+    </div>
+  );
+}
+
+ReactDOM.render(<TestComponent />, document.getElementById('main'));
 
